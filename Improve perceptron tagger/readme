@@ -1,4 +1,5 @@
 I tried to play aroud features in tagger.py to improve percepton tagger for portuguese language. 
+The UPOS was 93.19
 Firstly, I tried to change each number in get_features, make it larger or smaller to see what happens. 
 I find out that if I change the length of the suffix from -4 to -3 in this feature: (add('i suffix', word[-3:])) it works better snd result chsnges from 92.76 to 93.19.
 Changing anything in the other features only make the result worse.
@@ -6,4 +7,12 @@ Secondly, I tried to add new features to see what happens if we take different l
 This feature: (add('i suffix', word[-4:])) improve the result from 93.19 to 95.09.
 This feature: (add('i suffix', word[-5:])) improve the result from 93.19 to 95.22.
 Then I tried them both tougeter the result was improved from 93.19 to 95.93.
-Feature (add('i suffix', word[-2:])) change the result from 95.93 to 95.92.
+Feature (add('i suffix', word[-2:])) changed the result from 95.93 to 95.92.
+Feature (add('i suffix', word[-6:])) changed the result from 95.93 to 95.88.
+Thirdly, I tried to change the length of context.
+Feature (add('i-3 word', context[i - 3])) changed the result from 95.93 to 95.83.
+Feature (add('i-4 word', context[i - 4])) changes the result from 95.93 to 95.95.
+Feature (add('i-2 suffix', context[i - 2][-3:])) changed the result from 95.95 to 95.88.
+
+And changing or adding the other fearures only make the result worse, so I stopped.
+The result was improved from 93.19 to 95.95.
